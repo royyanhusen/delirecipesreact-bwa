@@ -1,0 +1,66 @@
+import { Swiper, SwiperSlide } from "swiper/react";
+import CategoryCard from "../components/CategoryCard";
+import axios from "axios";
+import { useEffect, useState } from "react"
+
+export default function CategoryWrapper() {
+
+    const [categories, setCategories] = useState<Category[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>();
+
+    useEffect(() => {
+        axios.get('http://127.0.0.1:8000/api/categories')
+            .then(response => {
+                setCategories(response.data.data);
+                setLoading(false);
+            })
+            .catch(error => {
+                setError(error.message);
+                setLoading(false);
+            });
+    }, []);
+
+    if (loading) {
+        return <div>Loading...</div>
+    }
+
+    if (error) {
+        return <div>Error loading dat: {error}</div>
+    }
+
+    return (
+        <section id="Categories" className="mt-[30px]">
+            <div className="flex items-center justify-between px-5">
+                <h2 className="font-bold">By Categories</h2>
+            </div>
+            <div className="swiper w-full mt-3">
+                <Swiper
+                    className="w-full mt-3"
+                    direction='horizontal'
+                    spaceBetween={16}
+                    slidesPerView="auto"
+                    slidesOffsetBefore={20}
+                    slidesOffsetAfter={20}
+                >
+                    <SwiperSlide className="!w-fit pb-[30px]">
+                        <CategoryCard />
+                    </SwiperSlide>
+                    <SwiperSlide className="!w-fit pb-[30px]">
+                        <CategoryCard />
+                    </SwiperSlide>
+                    <SwiperSlide className="!w-fit pb-[30px]">
+                        <CategoryCard />
+                    </SwiperSlide>
+                    <SwiperSlide className="!w-fit pb-[30px]">
+                        <CategoryCard />
+                    </SwiperSlide>
+                    <SwiperSlide className="!w-fit pb-[30px]">
+                        <CategoryCard />
+                    </SwiperSlide>
+
+                </Swiper>
+            </div>
+        </section>
+    )
+}
