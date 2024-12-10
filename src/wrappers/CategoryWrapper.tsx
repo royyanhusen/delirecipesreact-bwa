@@ -27,7 +27,7 @@ export default function CategoryWrapper() {
     }
 
     if (error) {
-        return <div>Error loading dat: {error}</div>
+        return <div>Error loading data: {error}</div>
     }
 
     return (
