@@ -39,6 +39,6 @@ export interface Category {
     name: string,
     slug: string,
     icon: string,
-    recipe_count: number,
+    recipes_count: number,
     recipes: Recipe[],
 }
