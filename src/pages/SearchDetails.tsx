@@ -50,19 +50,10 @@ export default function SearchDetails() {
         <>
             <nav className="flex items-center justify-between px-5 mt-[30px]">
                 <Link to={'/'}>
-                    <a className="flex shrink-0">
+                    <div className="flex shrink-0">
                         <img src="assets/images/logos/logo.svg" alt="logo" />
-                    </a>
-                </Link>
-                <a href="#">
-                    <div className="flex items-center justify-center w-10 h-10 rounded-full bg-white shadow-[0_10px_20px_0_#D6D6D6AB] transition-all duration-300 hover:shadow-[0_10px_20px_0_#FF4C1C80]">
-                        <img
-                            src="assets/images/icons/notification.svg"
-                            className="w-5 h-5 object-contain"
-                            alt="icon"
-                        />
                     </div>
-                </a>
+                </Link>
             </nav>
             <div className="px-5 mt-[30px]">
                 {loading && <p>loading...</p>}
@@ -96,10 +87,11 @@ export default function SearchDetails() {
                 <div className="flex flex-col gap-[18px] mt-[18px]">
                     {searchResult.length > 0 ? (
                         searchResult.map((recipe) => (
-                            <RecipeCardResult key={recipe.id} recipe={recipe} />
+                            <Link key={recipe.id} to={`/recipe/${recipe.slug}`}>
+                                <RecipeCardResult recipe={recipe} />
+                            </Link>
                         ))) : (<p>Belum ada resep terkait</p>)
                     }
-
                 </div>
             </section>
         </>
