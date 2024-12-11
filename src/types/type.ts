@@ -7,9 +7,15 @@ export interface Recipe {
     author: Author,
     category: Category,
     thumbnail: string,
+    photos: Photo[],
     tutorials: Tutorial[],
-    recipe_ingredients: RecipeIngredient[],
+    recipe_ingredient: RecipeIngredient[],
     about: string,
+}
+
+interface Photo {
+    id: number,
+    photo: string,
 }
 
 interface Tutorial {

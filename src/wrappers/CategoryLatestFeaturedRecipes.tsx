@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Category } from "../types/type";
@@ -47,7 +47,9 @@ export default function CategoryLatestFeaturedRecipes() {
                     category.recipes.length > 0 ? (
                         category.recipes.map((recipe) => (
                             <SwiperSlide key={recipe.id} className="swiper-slide !w-fit">
-                                <RecipeCardResult recipe={recipe} />
+                                <Link to={`/recipe/${recipe.slug}`} key={recipe.id}>
+                                    <RecipeCardResult recipe={recipe} />
+                                </Link>
                             </SwiperSlide>
                         ))) : (<p>Belum ada data terkait</p>)
                 }

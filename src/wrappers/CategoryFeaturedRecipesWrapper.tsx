@@ -2,7 +2,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { useEffect, useState } from "react";
 import { Category } from "../types/type";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import FeaturedRecipeCard from "../components/FeaturedRecipeCard";
 
 export default function CategoryFeaturedRecipesWrapper() {
@@ -60,7 +60,9 @@ export default function CategoryFeaturedRecipesWrapper() {
                         category.recipes.length > 0 ? (
                             category.recipes.map((recipe) => (
                                 <SwiperSlide key={recipe.id} className="swiper-slide !w-fit">
-                                    <FeaturedRecipeCard recipe={recipe} />
+                                    <Link to={`/recipe/${recipe.slug}`}>
+                                        <FeaturedRecipeCard recipe={recipe} />
+                                    </Link>
                                 </SwiperSlide>
                             ))) : (<p>Belum ada data recipe dari kategori tersebut</p>)
                     }

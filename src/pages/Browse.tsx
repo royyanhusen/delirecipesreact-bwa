@@ -59,7 +59,7 @@ export default function Browse() {
             </div>
             <CategoryWrapper />
             <BrowseFeaturedRecipesWrapper />
-
+\
             <div
                 id="BottomNav"
                 className="fixed z-50 bottom-0 w-full max-w-[640px] mx-auto border-t border-[#E7E7E7] py-4 px-5 bg-white/70 backdrop-blur"

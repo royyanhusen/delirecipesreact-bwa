@@ -5,7 +5,7 @@ export default function FeaturedRecipeCard({ recipe }: FeaturedRecipeCardProps) 
     const baseURL = "http://127.0.0.1:8000/storage/";
 
     return (
-        <a href="details.html" className="card">
+        <div className="card">
             <div className="relative w-[200px] h-[280px] rounded-[30px] bg-white overflow-hidden">
                 <img
                     src={`${baseURL}/${recipe.thumbnail}`}
@@ -34,7 +34,7 @@ export default function FeaturedRecipeCard({ recipe }: FeaturedRecipeCardProps) 
                     </div>
                 </div>
             </div>
-        </a>
+        </div>
     )
 }
 
