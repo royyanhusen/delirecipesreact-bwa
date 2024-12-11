@@ -12,7 +12,11 @@ export default function CategoryWrapper() {
     const [error, setError] = useState<string | null>();
 
     useEffect(() => {
-        axios.get('http://127.0.0.1:8000/api/categories')
+        axios.get('http://127.0.0.1:8000/api/categories', {
+            headers: {
+                'X-API-KEY':'F9D8865DCBF65E4B468BDE167DC4A'
+            }
+        })
             .then(response => {
                 setCategories(response.data.data);
                 setLoading(false);

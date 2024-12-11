@@ -19,7 +19,11 @@ export default function RecipeDetails() {
     const baseURL = "http://127.0.0.1:8000/storage/";
 
     useEffect(() => {
-        axios.get(`http://127.0.0.1:8000/api/recipe/${slug}`)
+        axios.get(`http://127.0.0.1:8000/api/recipe/${slug}`, {
+            headers: {
+                'X-API-KEY':'F9D8865DCBF65E4B468BDE167DC4A'
+            }
+        })
             .then(response => {
                 setRecipe(response.data.data);
                 setLoading(false);

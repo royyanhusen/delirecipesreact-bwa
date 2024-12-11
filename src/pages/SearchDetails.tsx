@@ -30,7 +30,11 @@ export default function SearchDetails() {
         setError(null);
 
         try {
-            const response = await axios.get(`http://127.0.0.1:8000/api/recipes/search?query=${query}`);
+            const response = await axios.get(`http://127.0.0.1:8000/api/recipes/search?query=${query}`, {
+                headers: {
+                    'X-API-KEY':'F9D8865DCBF65E4B468BDE167DC4A'
+                }
+            });
             setSearchResult(response.data.data);
         } catch (error) {
             setError('Error searching for recipes');
